@@ -1,0 +1,23 @@
+<div class="header-container" [class.auth-page]="isLoginOrRegisterPage()">
+
+    <div class="logo" [ngClass]="{ 'logo-stretched': isIndexPage() || isLoginOrRegisterPage() }">
+        Matchl<span class="heart">♥</span>y
+    </div>
+
+    <div class="nav">
+        @if (!authService.isLoggedIn() && !isLoginOrRegisterPage()) {
+        <div>
+            <button class="btn-register" routerLink="/register" routerLinkActive="active">Регистрация</button>
+            <button class="btn-login" routerLink="/login" routerLinkActive="active">Вход</button>
+        </div>
+        }
+        @else if (!isLoginOrRegisterPage()) {
+
+        <div>
+            <button class="btn-back" (click)="onBack()">←</button>
+            <button class="btn-logout" (click)="onLogout()">Изход</button>
+        </div>
+        }
+    </div>
+
+</div>
