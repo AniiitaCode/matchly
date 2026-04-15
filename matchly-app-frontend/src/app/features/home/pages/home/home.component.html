@@ -1,0 +1,39 @@
+<div class="home-container">
+
+    <button routerLink="/home-search">Търсачка🔍</button>
+
+    <div class="profile-completion">
+        <label>{{ profileCompletion }}%</label>
+        <div class="progress-bar">
+            <div class="progress-value" [style.width.%]="profileCompletion"></div>
+        </div>
+        <p>Попълни повече и увеличи шанса си за перфектно съвпадение♥</p>
+    </div>
+
+    <div class="home-zodiac-section">
+        <h2 class="title">Съвместими зодии:</h2>
+
+        <div class="zodiac-card" *ngFor="let zodiac of compatibleZodiacs">
+            <img [src]="getZodiacImage(zodiac)" [alt]="getZodiacName(zodiac)" class="zodiac-icon" />
+            <p>{{ getZodiacName(zodiac) }}</p>
+        </div>
+    </div>
+
+    <div class="profile-btns">
+        <p class="title">Моят профил</p>
+        <button *ngIf="currentUserId" [routerLink]="['/user', currentUserId]">Профил</button>
+        <button routerLink="/profile">Промяна на профил🖊️</button>
+        <button routerLink="/profile-dating">Хобита и интереси🖌️</button>
+        <button routerLink="/profile-personality">Личностни въпроси📝</button>
+    </div>
+
+    <div class="matches-btns">
+        <p class="title">Моите съвпадения</p>
+        <button routerLink="/matches">Открий съвпадения❓❤️</button>
+        <button routerLink="/matches/mutual">Взаимни съвпадения👩‍❤️‍👨</button>
+        <button routerLink="/matches/rejected">Отхвърлени съвпадения💔</button>
+    </div>
+
+    <button class="chat-btn" routerLink="/chats">Съобщения📩</button>
+
+</div>
