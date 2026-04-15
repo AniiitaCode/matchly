@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.register-container {
+    position: relative;
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', 'Times New Roman', serif;
+}
+
+h1 {
+    color: #4b5563;
+    text-decoration: underline;
+}
+
+form {
+    position: relative;
+    z-index: 2;
+    background: #adaff5;
+    border: 4px double #4f46e5;
+    padding: 0.3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.19);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 450px;
+    max-width: 450px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+select {
+    padding: 0rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Pacifico', 'Times New Roman', serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99,102,241,0.3);
+}
+
+button[type="submit"] {
+    padding: 0.9rem 1rem;
+    background: #6366f1;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.register-background {
+    position: absolute;
+    width: 300%;
+    height: 100%;
+    z-index: 1;
+}
+
+.puzzle-piece {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #6366f1;
+    border-radius: 20px;
+    opacity: 0.15;
+    animation: floatPiece 10s infinite ease-in-out;
+}
+
+.piece1 { top: 5%; left: 10%; }
+.piece2 { top: 60%; left: 15%; animation-delay: 2s; }
+.piece3 { top: 30%; right: 15%; animation-delay: 4s; }
+.piece4 { bottom: 10%; right: 30%; animation-delay: 6s; }
+.piece5 { bottom: 40%; right: 50%; animation-delay: 3s; }
+
+@keyframes floatPiece {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0px); }
+}
+
+.form-already {
+    text-decoration: underline;
+    font-size: 1.5rem;
+    color: #4b5563;
+    text-align: center;
+}
+
+.form-already a {
+    color: #6366f1;
+    text-decoration: none;
+}
+
+.form-already a:hover {
+    text-decoration: underline;
+}
+
+input.invalid {
+    border: 2px solid rgb(172, 50, 50);
+}
+
+input.valid {
+    border: 2px solid green;
+}

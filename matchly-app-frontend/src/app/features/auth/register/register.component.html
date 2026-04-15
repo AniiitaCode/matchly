@@ -1,0 +1,156 @@
+<div class="register-container">
+  <div class="register-background">
+    <div class="puzzle-piece piece1"></div>
+    <div class="puzzle-piece piece2"></div>
+    <div class="puzzle-piece piece3"></div>
+    <div class="puzzle-piece piece4"></div>
+    <div class="puzzle-piece piece5"></div>
+  </div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <h1>Регистрация</h1>
+
+    <input type="text" placeholder="Име" formControlName="firstName" name="firstName"
+    [class.invalid]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid"
+    [class.valid]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.valid">
+    <div *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('firstName')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('firstName')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="registerForm.get('firstName')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <input type="email" placeholder="Имейл" formControlName="email" name="email"
+    [class.invalid]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+    [class.valid]="registerForm.get('email')?.touched && registerForm.get('email')?.valid">
+    <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('email')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('email')?.errors?.['email']">
+        Въведете валиден имейл!
+      </div>
+    </div>
+
+
+    <input type="text" placeholder="Потребителско име" formControlName="username" name="username"
+    [class.invalid]="registerForm.get('username')?.touched && registerForm.get('username')?.invalid"
+    [class.valid]="registerForm.get('username')?.touched && registerForm.get('username')?.valid">
+    <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('username')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('username')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="registerForm.get('username')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <input type="number" placeholder="Възраст" formControlName="age" name="age"
+    [class.invalid]="registerForm.get('age')?.touched && registerForm.get('age')?.invalid"
+    [class.valid]="registerForm.get('age')?.touched && registerForm.get('age')?.valid">
+    <div *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('age')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('age')?.errors?.['min']">
+        Минималната възраст е 18 години!
+      </div>
+    </div>
+
+
+    <input type="text" placeholder="Град" formControlName="town" name="town"
+    [class.invalid]="registerForm.get('town')?.touched && registerForm.get('town')?.invalid"
+    [class.valid]="registerForm.get('town')?.touched && registerForm.get('town')?.valid">
+    <div *ngIf="registerForm.get('town')?.touched && registerForm.get('town')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('town')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('town')?.errors?.['minlength']">
+        Минимум 4 символа!
+      </div>
+
+      <div *ngIf="registerForm.get('town')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <select formControlName="gender" name="gender"
+    [class.invalid]="registerForm.get('gender')?.touched && registerForm.get('gender')?.invalid"
+    [class.valid]="registerForm.get('gender')?.touched && registerForm.get('gender')?.valid">
+      <option value="" disabled selected>Пол</option>
+      <option [ngValue]="GenderType.MALE">{{ GenderDisplayName[GenderType.MALE] }}</option>
+      <option [ngValue]="GenderType.FEMALE">{{ GenderDisplayName[GenderType.FEMALE] }}</option>
+    </select>
+    <div *ngIf="registerForm.get('gender')?.touched && registerForm.get('gender')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('gender')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+    </div>
+
+
+    <input type="password" placeholder="Парола" formControlName="password" name="password"
+    [class.invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+    [class.valid]="registerForm.get('password')?.touched && registerForm.get('password')?.valid">
+    <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('password')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="registerForm.get('password')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <input type="password" placeholder="Потвърди парола" formControlName="confirmPassword" name="confirmPassword"
+    [class.invalid]="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid"
+    [class.valid]="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.valid">
+    <div *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="registerForm.get('confirmPassword')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="registerForm.get('confirmPassword')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <button type="submit" [disabled]="registerForm.invalid">Регистрация</button>
+    <p class="form-already">Вече имаш акаунт? <a routerLink="/login">Вход</a>!</p>
+  </form>
+</div>
