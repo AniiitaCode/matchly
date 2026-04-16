@@ -3,6 +3,7 @@ import { LandingPageComponent } from './features/home/pages/landing-page/landing
 import { LoginComponent } from './features/auth/login/login.component';
 import { RegisterComponent } from './features/auth/register/register.component';
 import { HomeComponent } from './features/home/pages/home/home.component';
+import { EditProfileComponent } from './features/profile/pages/edit-profile/edit-profile.component';
 import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
 
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'profile', component: EditProfileComponent, canActivate: [authGuard] },
 ];
 
