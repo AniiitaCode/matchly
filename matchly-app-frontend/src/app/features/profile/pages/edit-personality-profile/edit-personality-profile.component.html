@@ -1,0 +1,179 @@
+<div class="update-personality-container">
+    <div class="update-personality-background">
+        <div class="puzzle-piece piece1"></div>
+        <div class="puzzle-piece piece2"></div>
+        <div class="puzzle-piece piece3"></div>
+        <div class="puzzle-piece piece4"></div>
+        <div class="puzzle-piece piece5"></div>
+    </div>
+
+    <form (ngSubmit)="onUpdatePersonality()">
+        <div class="notebook">
+
+            <div class="notebook-page">
+
+                <h1>Актуализация</h1>
+                <h3>Цигари:</h3>
+                <select [(ngModel)]="smokingHabit" name="smokingHabit">
+                    <option value="" disabled selected>Избери</option>
+                    @for(value of SmokingHabitValues; track value) {
+                    <option [ngValue]="value">
+                        {{ SmokingHabitDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Алкохол:</h3>
+                <select [(ngModel)]="alcoholConsumption" name="alcoholConsumption">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of AlocolConcumptionValues; track value) {
+                    <option [ngValue]="value">
+                        {{ AlcoholConsumptionDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Обичам животни:</h3>
+                <select [(ngModel)]="likesAnimals" name="likesAnimals">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of LikesAnimalsValues; track value) {
+                    <option [ngValue]="value">
+                        {{ LikesAnimalsDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Имам животни:</h3>
+                <select [(ngModel)]="hasPets" name="hasPets">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of HasPetsValues; track value) {
+                    <option [ngValue]="value">
+                        {{ HasPetsDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Искам животни:</h3>
+                <select [(ngModel)]="wantsPets" name="wantsPets">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of WantsPetsValues; track value) {
+                    <option [ngValue]="value">
+                        {{ WantsPetsDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Зодия:</h3>
+                <select [(ngModel)]="zodiacSign" name="zodiacSign">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of ZodiacSignValues; track value) {
+                    <option [ngValue]="value">
+                        {{ ZodiacSignDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>За мен изневярата е:</h3>
+                <select [(ngModel)]="cheatingDefinition" name="cheatingDefinition">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of CheatingDefinitionValues; track value) {
+                    <option [ngValue]="value">
+                        {{ CheatingDefinitionDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Бих простил/а изневяра:</h3>
+                <select [(ngModel)]="cheatingForgiveness" name="cheatingForgiveness">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of CheatingForgivenessValues; track value) {
+                    <option [ngValue]="value">
+                        {{ CheatingForgivenessDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+            </div>
+
+            <div class="notebook-spine">
+                @for (ring of rings; track ring) {
+                <div class="notebook-ring"></div>
+                }
+            </div>
+
+            <div class="notebook-page">
+                <h3>Решавам конфликти:</h3>
+                <select [(ngModel)]="conflictResolutionStyle" name="conflictResolutionStyle">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of ConflictResolutionStyleValues; track value) {
+                    <option [ngValue]="value">
+                        {{ ConflictResolutionStyleDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Зависимост с партньора:</h3>
+                <select [(ngModel)]="partnerIndependenceLevel" name="partnerIndependenceLevel">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of PartnerIndependenceLevelValues; track value) {
+                    <option [ngValue]="value">
+                        {{ PartnerIndependenceLevelDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Тайни от партньора:</h3>
+                <select [(ngModel)]="relationshipSecretsPolicy" name="relationshipSecretsPolicy">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of RelationshipSecretsPolicyValues; track value) {
+                    <option [ngValue]="value">
+                        {{ RelationshipSecretsPolicyDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Приоритет за една връзка е:</h3>
+                <select [(ngModel)]="relationshipPriority" name="relationshipPriority">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of RelationshipPriorityValues; track value) {
+                    <option [ngValue]="value">
+                        {{ RelationshipPriorityDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>При обида очаквам от партньора:</h3>
+                <select [(ngModel)]="hurtResponseExpectation" name="hurtResponseExpectation">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of HurtResponseExpectationValues; track value) {
+                    <option [ngValue]="value">
+                        {{ HurtResponseExpectationDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Когато партньорът сгреши очаквам:</h3>
+                <select [(ngModel)]="apologyMethod" name="apologyMethod">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of ApologyMethodValues; track value) {
+                    <option [ngValue]="value">
+                        {{ ApologyMethodDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>С партньора имаме:</h3>
+                <select [(ngModel)]="relationshipRoles" name="relationshipRoles">
+                    <option value="" disabled selected>Избери</option>
+                    @for (value of RelationshipRolesValues; track value) {
+                    <option [ngValue]="value">
+                        {{ RelationshipRolesDisplayName[value] }}
+                    </option>
+                    }
+                </select>
+
+                <button type="submit">Актуализирай</button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.update-personality-container {
+    position: relative;
+    min-height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Pacifico', 'Times New Roman', serif;
+}
+
+.notebook {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2rem;
+    margin-bottom: -10px;
+}
+
+.notebook-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    background-color: rgb(239, 234, 236);
+    padding: 10px;
+    border: 8px double #0b0b0b;
+    border-radius: 8px;
+    width: 25rem;
+    height: 45rem;
+    margin-bottom: 50px;
+}
+
+.hobby-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.notebook-spine {
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.notebook-ring {
+    width: 30px;
+    height: 15px;
+    border: 5px solid #333;
+    border-bottom: none;       
+    border-radius: 20px 20px 0 0;
+}
+
+h1 {
+    color: #4b5563;
+    text-decoration: underline;
+}
+
+form {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.1rem;
+}
+
+.hobby-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f3f4f6;
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+input[type="text"],
+input[type="checkbox"] {
+    padding: 0rem 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Pacifico', 'Times New Roman', serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select {
+    height: 35px;
+    padding: 0rem 1rem;
+    margin-top: -10px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Pacifico', 'Times New Roman', serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+h3 {
+    font-size: 21px;
+    text-decoration: underline;
+    color: #4b5563;
+}
+
+input:focus,
+select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+button[type="submit"] {
+    padding: 0.9rem 1rem;
+    margin-top: 10px;
+    background: palevioletred;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.update-personality-background {
+    position: absolute;
+    width: 300%;
+    height: 100%;
+    z-index: 1;
+}
+
+.puzzle-piece {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #6366f1;
+    border-radius: 20px;
+    opacity: 0.15;
+    animation: floatPiece 10s infinite ease-in-out;
+}
+
+.piece1 {
+    top: 40%;
+    left: 30%;
+}
+
+.piece2 {
+    top: 24%;
+    left: 65%;
+    animation-delay: 2s;
+}
+
+.piece3 {
+    top: 30%;
+    right: 15%;
+    animation-delay: 4s;
+}
+
+.piece4 {
+    bottom: 10%;
+    right: 30%;
+    animation-delay: 6s;
+}
+
+.piece5 {
+    bottom: 40%;
+    right: 50%;
+    animation-delay: 3s;
+}
+
+@keyframes floatPiece {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
