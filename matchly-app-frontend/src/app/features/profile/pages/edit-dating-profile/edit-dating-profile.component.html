@@ -1,0 +1,90 @@
+<div class="update-dating-container">
+    <div class="update-dating-background">
+        <div class="puzzle-piece piece1"></div>
+        <div class="puzzle-piece piece2"></div>
+        <div class="puzzle-piece piece3"></div>
+        <div class="puzzle-piece piece4"></div>
+        <div class="puzzle-piece piece5"></div>
+    </div>
+
+    <form (ngSubmit)="onUpdateDating()">
+        <div class="notebook">
+
+            <div class="notebook-page">
+
+                <h1>Актуализация</h1>
+                <input type="text" placeholder="Био" [(ngModel)]="bio" name="bio" maxlength= "100">
+                <div *ngIf="bio.length > 99" style="color: rgb(172, 50, 50);">
+                        Максимум 100 символа!
+                </div>
+                <p>{{ bio.length }}/100</p>
+
+                <div class="hobbies-grid">
+                    
+                    <label *ngFor="let hobby of HobbyKeys; trackBy: trackByHobby">
+                        <input type="checkbox" [value]="hobby" (change)="onHobbyChange($event)"
+                            [checked]="hobbies.includes(hobby)"
+                            [disabled]="hobbies.length >= 7 && !hobbies.includes(hobby)" />
+                        {{ HobbyTypeDisplayName[hobby] }}
+                    </label>
+                
+                </div>
+        
+                <div *ngIf="hobbies.length >= 7" style="color: rgb(172, 50, 50); margin-top: 5px;">
+                    Може да изберете максимум 7 хобита!
+                </div>
+            </div>
+
+            <div class="notebook-spine">
+                @for (ring of rings; track ring) {
+                <div class="notebook-ring"></div>
+                }
+            </div>
+
+            <div class="notebook-page">
+                <h3>В момента съм:</h3>
+                <select [(ngModel)]="relationshipStatus" name="relationshipStatus">
+                    <option value="" disabled selected>Избери статус</option>
+                    @for(status of RelationshipStatusValues; track status) {
+                    <option [ngValue]="status">
+                        {{ RelationshipStatusDisplayName[status] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Търся:</h3>
+                <select [(ngModel)]="relationshipType" name="relationshipType">
+                    <option value="" disabled selected>Избери тип</option>
+                    @for (type of RelationshipTypeValues; track type) {
+                    <option [ngValue]="type">
+                        {{ RelationshipTypeDisplayName[type] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Аз:</h3>
+                <select [(ngModel)]="childrenStatus" name="childrenStatus">
+                    <option value="" disabled selected>Избери статус</option>
+                    @for (status of ChildrenStatusValues; track status) {
+                    <option [ngValue]="status">
+                        {{ ChildrenStatusDisplayName[status] }}
+                    </option>
+                    }
+                </select>
+
+                <h3>Аз:</h3>
+                <select [(ngModel)]="wantsChildren" name="wantsChildren">
+                    <option value="" disabled selected>Избери</option>
+                    @for (want of WantsChildrenValues; track want) {
+                    <option [ngValue]="want">
+                        {{ WantsChildrenDisplayName[want] }}
+                    </option>
+                    }
+                </select>
+
+                <button type="submit">Актуализирай</button>
+            </div>
+        </div>
+
+    </form>
+</div>
