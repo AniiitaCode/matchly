@@ -1,0 +1,122 @@
+<div class="edit-container">
+  <div class="edit-background">
+    <div class="puzzle-piece piece1"></div>
+    <div class="puzzle-piece piece2"></div>
+    <div class="puzzle-piece piece3"></div>
+    <div class="puzzle-piece piece4"></div>
+    <div class="puzzle-piece piece5"></div>
+  </div>
+
+
+  <form [formGroup]="editForm" (ngSubmit)="onEdit()">
+    <h1>Актуализация</h1>
+    <input type="text" placeholder="Име" formControlName="firstName" name="firstName"
+      [class.invalid]="editForm.get('firstName')?.touched && editForm.get('firstName')?.invalid"
+      [class.valid]="editForm.get('firstName')?.touched && editForm.get('firstName')?.valid">
+    <div *ngIf="editForm.get('firstName')?.touched && editForm.get('firstName')?.invalid"
+      style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('firstName')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="editForm.get('firstName')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="editForm.get('firstName')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <input type="email" placeholder="Имейл" formControlName="email" name="email"
+      [class.invalid]="editForm.get('email')?.touched && editForm.get('email')?.invalid"
+      [class.valid]="editForm.get('email')?.touched && editForm.get('email')?.valid">
+    <div *ngIf="editForm.get('email')?.touched && editForm.get('email')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('email')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="editForm.get('email')?.errors?.['email']">
+        Въведете валиден имейл!
+      </div>
+    </div>
+
+
+    <input type="text" placeholder="Потребителско име" formControlName="username" name="username"
+      [class.invalid]="editForm.get('username')?.touched && editForm.get('username')?.invalid"
+      [class.valid]="editForm.get('username')?.touched && editForm.get('username')?.valid">
+    <div *ngIf="editForm.get('username')?.touched && editForm.get('username')?.invalid"
+      style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('username')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="editForm.get('username')?.errors?.['minlength']">
+        Минимум 3 символа!
+      </div>
+
+      <div *ngIf="editForm.get('username')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <input type="number" placeholder="Възраст" formControlName="age" name="age"
+      [class.invalid]="editForm.get('age')?.touched && editForm.get('age')?.invalid"
+      [class.valid]="editForm.get('age')?.touched && editForm.get('age')?.valid">
+    <div *ngIf="editForm.get('age')?.touched && editForm.get('age')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('age')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="editForm.get('age')?.errors?.['min']">
+        Минималната възраст е 18 години!
+      </div>
+    </div>
+
+
+    <input type="text" placeholder="Град" formControlName="town" name="town"
+      [class.invalid]="editForm.get('town')?.touched && editForm.get('town')?.invalid"
+      [class.valid]="editForm.get('town')?.touched && editForm.get('town')?.valid">
+    <div *ngIf="editForm.get('town')?.touched && editForm.get('town')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('town')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+
+      <div *ngIf="editForm.get('town')?.errors?.['minlength']">
+        Минимум 4 символа!
+      </div>
+
+      <div *ngIf="editForm.get('town')?.errors?.['maxlength']">
+        Максимум 20 символа!
+      </div>
+    </div>
+
+
+    <select formControlName="gender" name="gender">
+      <option value="" disabled selected>Пол</option>
+      <option [ngValue]="GenderType.MALE">{{ GenderDisplayName[GenderType.MALE] }}</option>
+      <option [ngValue]="GenderType.FEMALE">{{ GenderDisplayName[GenderType.FEMALE] }}</option>
+    </select>
+
+
+    <input type="url" placeholder="Снимка" formControlName="profilePicture" name="profilePicture"
+      [class.invalid]="editForm.get('profilePicture')?.touched && editForm.get('profilePicture')?.invalid"
+      [class.valid]="editForm.get('profilePicture')?.touched && editForm.get('profilePicture')?.valid">
+    <div *ngIf="editForm.get('profilePicture')?.touched && editForm.get('profilePicture')?.invalid" style="color: rgb(172, 50, 50);">
+
+      <div *ngIf="editForm.get('profilePicture')?.errors?.['required']">
+        Полето не може да бъде празно!
+      </div>
+    </div>
+
+
+    <button type="submit" [disabled]="editForm.invalid">Актуализирай</button>
+  </form>
+</div>
