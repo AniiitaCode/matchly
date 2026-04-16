@@ -1,0 +1,68 @@
+<div class="search-container">
+
+    <form (ngSubmit)="onSearch()" class="search-form">
+        <h1>🔍</h1>
+        <input type="text" placeholder="Потребителско име" [(ngModel)]="username" name="username">
+        <input type="text" placeholder="Град" [(ngModel)]="town" name="town">
+        <input type="number" placeholder="Минимална възраст" [(ngModel)]="minAge" name="minAge">
+        <input type="number" placeholder="Максимална възраст" [(ngModel)]="maxAge" name="maxAge">
+
+        <button type="submit">Търси</button>
+    </form>
+
+    <div *ngIf="loading" class="modal-backdrop" (click)="closeModal()"></div>
+
+    <div class="modal" *ngIf="loading || (searchPerformed && results.length >= 0)">
+        <h2>Резултати</h2>
+
+        <div *ngIf="loading" class="loader-container">
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+        </div>
+
+        <ul *ngIf="!loading && results.length > 0" class="user-cards">
+            <li *ngFor="let user of results">
+                <a [routerLink]="['/user', user.id]" (click)="closeModal()" class="user-card">
+
+                    <img [src]="user.profilePicture" alt="profile" class="avatar">
+
+                    <span class="username">
+                        {{ user.username }}
+                    </span>
+
+                </a>
+            </li>
+        </ul>
+
+        <div *ngIf="!loading && searchPerformed && results.length === 0">
+            Няма намерени резултати.
+        </div>
+
+        <button class="close-btn" (click)="closeModal()">Затвори</button>
+    </div>
+
+    <div class="heart-container"></div>
+
+    <div class="background">
+
+        @for (row of rows; track $index; let i = $index) {
+        <div class="row" [class.women]="i % 2 === 0" [class.men]="i % 2 !== 0">
+
+            @for (emoji of (i % 2 === 0 ? womenRow : menRow); track emoji) {
+            <span>{{ emoji }}</span>
+            }
+
+            @for (emoji of (i % 2 === 0 ? womenRow : menRow); track emoji) {
+            <span>{{ emoji }}</span>
+            }
+
+            @for (emoji of (i % 2 === 0 ? womenRow : menRow); track emoji) {
+            <span>{{ emoji }}</span>
+            }
+
+        </div>
+        }
+
+    </div>
+</div>
