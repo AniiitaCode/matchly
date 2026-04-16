@@ -6,6 +6,7 @@ import { HomeComponent } from './features/home/pages/home/home.component';
 import { EditProfileComponent } from './features/profile/pages/edit-profile/edit-profile.component';
 import { EditDatingProfileComponent } from './features/profile/pages/edit-dating-profile/edit-dating-profile.component';
 import { EditPersonalityProfileComponent } from './features/profile/pages/edit-personality-profile/edit-personality-profile.component';
+import { SearchComponent } from './features/search/pages/search/search.component';
 import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'profile', component: EditProfileComponent, canActivate: [authGuard] },
   { path: 'profile-dating', component: EditDatingProfileComponent, canActivate: [authGuard] },
   { path: 'profile-personality', component: EditPersonalityProfileComponent, canActivate: [authGuard] },
+  { path: 'home-search', component: SearchComponent, canActivate: [authGuard] },
 ];
 
