@@ -1,0 +1,77 @@
+<div class="photos-grid">
+  <div *ngFor="let photo of photos; let i = index;" class="photo-slot">
+
+    <div class="toast" *ngIf="toast.message" [attr.data-id]="toast.id">
+      {{ toast.message }}
+    </div>
+
+    <img *ngIf="photo.url" [src]="photo.url" alt="User photo">
+
+    <button *ngIf="photo.url && userId === currentUserId" class="delete-button"
+      (click)="deletePhoto(i, photo.id)">✖️</button>
+
+    <div *ngIf="!photo.url && photo.user?.id === currentUserId && showUpload" class="upload-button"
+      (click)="triggerUpload(i)">+</div>
+
+    <input type="file" #fileInput style="display: none" (change)="onFileSelected($event, i)">
+
+    <div class="btn-actions">
+
+      <button *ngIf="photo.url" class="like-button" (click)="likePhoto(i)">❤️
+        <span class="likesCounter" *ngIf="photo.likes > 0" (click)="openLikes(i)">{{ photo.likes }}</span>
+      </button>
+
+      <div *ngIf="activeLikesIndex !== null" class="likes-modal">
+        <div class="likes-modal-content">
+          <button class="close-button" (click)="closeLikes()">✖</button>
+
+          <h3>Харесвания ❤️</h3>
+
+          <div class="likes-list">
+            <div *ngFor="let user of photos[activeLikesIndex].likedBy" class="like-item">
+              <a (click)="goToProfile(user.userId)">
+                <img [src]="user.profilePicture" alt="Profile photo" class="user-avatar">
+                <span class="username-style">{{ user.username }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button *ngIf="photo.url" class="comment-button" (click)="openCommentBox(i)">💬
+        <span class="commentsCounter">{{ photo.comments || 0 }}</span>
+      </button>
+
+      <div *ngIf="activeCommentIndex !== null" class="comment-modal">
+        <div class="comment-modal-content">
+          <button class="close-button" (click)="closeCommentBox()">✖</button>
+
+          <h3>Коментари💬</h3>
+
+          <div class="comments-list">
+            <div *ngFor="let comment of photos[activeCommentIndex].commentsList" class="comment-item">
+              <a (click)="goToProfile(comment.userId)">
+                <strong>{{ comment.username }}: </strong>
+                <span>{{ comment.content }}</span>
+              </a>
+
+              <span class="date">{{ comment.commentedAt | date:'dd.MM.yyyy, HH:mm' }}</span>
+
+            </div>
+          </div>
+
+          <input type="text" [(ngModel)]="commentText" placeholder="Напиши коментар..." />
+
+          <div class="error" *ngIf="commentText.length >= 150">
+            ⚠️ Коментарът е твърде дълъг! Максимум 150 символа!
+          </div>
+
+          <button class="submit-btn" [disabled]="!commentText || commentText.length > 150"
+            (click)="submitComment(activeCommentIndex)">Изпрати</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  height: 50px;
+  margin-bottom: 400px;
+  position: relative;
+}
+
+.photo-slot {
+  position: relative;
+  width: 100%;
+  max-width: 85%;
+  padding-top: 90%;
+  background-color: #f0f0f0;
+  border: 2px dashed #141111;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  overflow: hidden;
+}
+
+.photo-slot>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  padding-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+.photo-slot:hover {
+  transform: scale(1.9);
+  z-index: 10;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #555;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.like-button {
+  position: absolute;
+  bottom: -2px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  padding-right: 90px;
+}
+
+.likesCounter {
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.comment-button {
+  position: absolute;
+  left: 35px;
+  bottom: -3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  cursor: pointer;
+  padding-right: 90px;
+}
+
+.commentsCounter {
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.comment-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.7), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.likes-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.7), rgba(0, 0, 0, 0.8));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.comment-modal-content {
+  background: #fefefe;
+  padding: 20px;
+  width: 100%;
+  max-width: 50vw;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.likes-modal-content {
+  background: #fefefe;
+  padding: 20px;
+  width: 100%;
+  max-width: 30vw;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1010;
+}
+
+h3 {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 30px;
+  font-family: 'Pacifico', sans-serif;
+}
+
+.comment-modal .close-button,
+.likes-modal .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #333;
+}
+
+.comments-list {
+  margin-bottom: 15px;
+  overflow-y: auto;
+  max-height: 400px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comment-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 1.5rem;
+  display: flex;
+}
+
+.date {
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.20); 
+  height: 19px;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.comment-box input[type="text"] {
+  width: 100%;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.comment-box button.submit-comment {
+  align-self: flex-end;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.comment-box button.submit-comment:hover {
+  background-color: #212325;
+}
+
+.likes-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-right: 10px;
+  max-height: 60vh;
+}
+
+.like-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.like-item a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid rgb(178, 121, 196);
+  object-fit: cover;
+  border-bottom: 5px solid rgb(178, 121, 196);
+}
+
+.username-style {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.upload-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #555;
+  background: rgba(255, 255, 255, 0.7);
+  border: 2px dashed #888;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ff4d4f;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInOut 3s ease;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.likes-tooltip {
+  position: absolute;
+  top: -5px;
+  left: 105%;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.liked-user {
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.liked-user:hover {
+  text-decoration: underline;
+}
+
