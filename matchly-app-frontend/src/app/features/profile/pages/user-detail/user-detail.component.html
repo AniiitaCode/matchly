@@ -1,0 +1,152 @@
+<div class="user-container">
+
+    <div class="user-background">
+        <div class="puzzle-piece piece1"></div>
+        <div class="puzzle-piece piece2"></div>
+        <div class="puzzle-piece piece3"></div>
+        <div class="puzzle-piece piece4"></div>
+        <div class="puzzle-piece piece5"></div>
+    </div>
+
+    <div *ngIf="user">
+        <div class="notebook">
+
+            <div class="notebook-page">
+                <div class="first-page">
+                    <div class="top">
+                        <img [src]="user.profilePicture" alt="profile" class="avatar">
+                        <h2 class="username">{{ user.username | capitalize }}</h2>
+                        <div class="user-info">
+                            <span class="icon">📝</span>
+                            <span class="text">
+                                @if (user.bio) {
+                                {{ user.bio }}
+                                } @else {
+                                Описание...🙄
+                                }
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bottom">
+
+                        <div class="user-info">
+                            <span class="icon">👤</span>
+                            <span class="text">{{ user.firstName }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🎂</span>
+                            <span class="text">{{ user.age }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🏙️</span>
+                            <span class="text">{{ user.town }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">
+                                {{
+                                user.gender === 'MALE' ? '♂️' :
+                                user.gender === 'FEMALE' ? '♀️' : '⚧'
+                                }}
+                            </span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">📅</span>
+                            <span class="text">{{ user.createdOn | date:'mediumDate' }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🕒</span>
+                            <span class="text">{{ user.updatedOn | date:'mediumDate' }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🚬</span>
+                            <span class="text">{{ SmokingHabitDisplayName[user.smokingHabit] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🍸</span>
+                            <span class="text">{{ AlcoholConsumptionDisplayName[user.alcoholConsumption] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🐾</span>
+                            <span class="text">{{ YesNoPreferenceDisplayName[user.hasPets] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🔮</span>
+                            <span class="text">{{ ZodiacDisplayName[user.zodiacSign] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">👶</span>
+                            <span class="text">{{ ChildrenStatusDisplayName[user.childrenStatus] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">💑</span>
+                            <span class="text">{{ RelationshipStatusDisplayName[user.relationshipStatus] }}</span>
+                        </div>
+                        <div class="user-info">
+                            <span class="icon">🕵️‍♂️</span>
+                            <span class="icon">👉</span>
+                            <span class="icon">
+                                {{
+                                user.relationshipType === 'SERIOUS_RELATIONSHIP' ? '❤️' :
+                                user.relationshipType === 'DATING' ? '👫' :
+                                user.relationshipType === 'FRIENDSHIP' ? '🤝' :
+                                user.relationshipType === 'CHAT' ? '💬' :
+                                user.relationshipType === 'CASUAL_DATING' ? '🔥' :
+                                '❓'
+                                }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="user-info">
+                        <p>Интереси:</p>
+                        <span class="icon" *ngFor="let hobby of user.hobbies">
+                            {{
+                            hobby === 'SPORT' ? '🏀' :
+                            hobby === 'TRAVEL' ? '✈️' :
+                            hobby === 'MUSIC' ? '🎵' :
+                            hobby === 'CINEMA' ? '🎬' :
+                            hobby === 'READING' ? '📚' :
+                            hobby === 'COOKING' ? '🍳' :
+                            hobby === 'DANCING' ? '💃' :
+                            hobby === 'PHOTOGRAPHY' ? '📸' :
+                            hobby === 'GAMING' ? '🎮' :
+                            hobby === 'FITNESS' ? '🏋️' :
+                            hobby === 'HIKING' ? '🥾' :
+                            hobby === 'TECHNOLOGY' ? '💻' :
+                            hobby === 'ART' ? '🎨' :
+                            hobby === 'THEATER' ? '🎭' :
+                            hobby === 'VOLUNTEERING' ? '🤝' :
+                            hobby === 'YOGA' ? '🧘' :
+                            hobby === 'SWIMMING' ? '🏊' :
+                            hobby === 'RUNNING' ? '🏃' :
+                            hobby === 'CYCLING' ? '🚴' :
+                            hobby === 'BOARD_GAMES' ? '🎲' :
+                            hobby === 'GARDENING' ? '🌱' :
+                            hobby === 'LANGUAGES' ? '🗣️' :
+                            hobby === 'FASHION' ? '👗' :
+                            hobby === 'TRIVIA' ? '❓' :
+                            hobby === 'MEDITATION' ? '🕉️' :
+                            '❔'
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notebook-spine">
+                @for (ring of rings; track ring) {
+                <div class="notebook-ring"></div>
+                }
+            </div>
+
+            <div class="notebook-page" *ngIf="user?.id">
+                <h1>📸</h1>
+                <app-user-photos 
+                [userId]="user.id"
+                [showUpload]="user.id === currentUserId">
+                </app-user-photos>
+            </div>
+
+
+        </div>
+    </div>
+</div>
