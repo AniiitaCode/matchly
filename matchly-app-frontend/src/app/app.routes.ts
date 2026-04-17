@@ -7,6 +7,7 @@ import { EditProfileComponent } from './features/profile/pages/edit-profile/edit
 import { EditDatingProfileComponent } from './features/profile/pages/edit-dating-profile/edit-dating-profile.component';
 import { EditPersonalityProfileComponent } from './features/profile/pages/edit-personality-profile/edit-personality-profile.component';
 import { SearchComponent } from './features/search/pages/search/search.component';
+import { UserDetailComponent } from './features/profile/pages/user-detail/user-detail.component';
 import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: 'profile-dating', component: EditDatingProfileComponent, canActivate: [authGuard] },
   { path: 'profile-personality', component: EditPersonalityProfileComponent, canActivate: [authGuard] },
   { path: 'home-search', component: SearchComponent, canActivate: [authGuard] },
+  { path: 'user/:id', component: UserDetailComponent, canActivate: [authGuard] },
 ];
 
