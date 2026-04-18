@@ -27,6 +27,14 @@ export class App {
     return this.router.url === '/login' || this.router.url === '/register';
   }
 
+  get isMessagesPage(): boolean {
+    return this.router.url.startsWith('/chats');
+  }
+
+  get isMatchingPages(): boolean {
+    return this.router.url.startsWith('/matches');
+  }
+
   async ngOnInit() {
     await firstValueFrom(
       this.authService.restoreUser().pipe(
