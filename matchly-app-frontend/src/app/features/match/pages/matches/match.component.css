@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.match-container {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.7), rgba(0, 0, 0, 0.8));
+  backdrop-filter: blur(4px);
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.match-heart {
+  width: 41vmin;
+  height: 41vmin;
+  aspect-ratio: 1;
+  background-color: #A83058;
+  transform: rotate(-45deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.match-heart::before,
+.match-heart::after {
+  content: '';
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  background-color: #A83058;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.match-heart::before {
+  top: -100px;
+  left: 0;
+}
+
+.match-heart::after {
+  top: 0;
+  left: 100px;
+}
+
+.match-content {
+  transform: rotate(45deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 60px;
+  text-decoration: none;
+  z-index: 2;
+}
+
+.match-content img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.match-content p {
+  font-weight: bold;
+  color: white;
+  font-size: 19px;
+}
+
+.match-content p:hover {
+  background-color: rgb(202, 90, 127);
+  ;
+}
+
+.score-bar {
+  width: 120px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+.score-value {
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.3rem;
+}
+
+.match-buttons {
+  display: flex;
+  gap: 100px;
+  margin-right: 170px;
+  transform: rotate(45deg);
+  overflow: hidden;
+}
+
+.match-buttons button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-size: 20px;
+  border: 2px solid #A83058;
+}
+
+.match-buttons button:hover {
+  transform: scale(1.1);
+  background-color: rgb(202, 90, 127);
+}
+
+.match-buttons .approve {
+  background-color: #ff4757;
+  color: white;
+}
+
+.match-buttons .reject {
+  background-color: #57606f;
+  color: white;
+}
+
+.loading,
+.not-matches {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 50px;
+  text-decoration: underline;
+  font-family: 'Pacifico', sans-serif;
+}
+
+.match-heart {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.swipe-left {
+  transform: translateX(-150%) rotate(-10deg);
+  opacity: 0;
+}
+
+.swipe-right {
+  transform: translateX(150%) rotate(10deg);
+  opacity: 0;
+}
+
+.btn-back {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 3px white;
+  background-color: rgb(168, 48, 88);
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

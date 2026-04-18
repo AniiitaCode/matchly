@@ -1,0 +1,31 @@
+<div class="match-container">
+
+  <button class="btn-back" (click)="onBack()">←</button>
+
+  <div *ngIf="loading" class="loading">Генериране на съвпадения... ⏳</div>
+
+  <div *ngIf="!loading && currentMatch" class="match-heart"
+    [class.swipe-left]="animating && animationDirection === 'left'"
+    [class.swipe-right]="animating && animationDirection === 'right'">
+
+    <a [routerLink]="['/user/', currentMatch.userId]" class="match-content">
+      <img [src]="currentMatch.photoUrl" [alt]="currentMatch.username" />
+      <p>{{ currentMatch.username }}</p>
+
+      <div class="score-bar">
+        <div class="score-fill" [style.width.%]="currentMatch.overallScore"></div>
+      </div>
+      <p class="score-value">{{ currentMatch.overallScore | number:'1.1-1' }}%</p>
+    </a>
+
+    <div class="match-buttons">
+      <button (click)="onApprove(currentMatch.matchId)">❤️</button>
+      <button (click)="onReject(currentMatch.matchId)">💔</button>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !currentMatch" class="not-matches">
+    Няма повече съвпадения! Опитай пак по-късно!
+  </div>
+
+</div>
