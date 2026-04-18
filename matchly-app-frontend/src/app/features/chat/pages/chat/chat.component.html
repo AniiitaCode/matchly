@@ -1,0 +1,53 @@
+<div class="chat-wrapper">
+
+    <div class="chat-list">
+        <div class="title">
+            <button class="btn-back" (click)="onBack()">←</button>
+            <h2>Съобщения</h2>
+            <h3>📩</h3>
+        </div>
+
+
+        <div class="chat-message" *ngFor="let chat of chats" (click)="selectChat(chat)"
+            [class.active]="chat.id === chatRoomId">
+            <strong>{{ chat.userName }}</strong>
+
+            <div class="last-message">
+                <span>
+                    {{ chat.senderId === currentUser
+                    ? 'Аз:'
+                    : chat.senderUsername ? `${chat.senderUsername}:` : ''
+                    }}
+                </span>
+                
+                <p>{{ chat.lastMessage }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-detail" *ngIf="chatRoomId">
+
+
+        <div id="chat-container" class="chat-detail-messages" (scroll)="onScroll($event)">
+
+            <div *ngIf="loading" class="spinner">
+                Зареждане...⏳
+            </div>
+
+            <div *ngIf="!loading">
+                <div *ngFor="let msg of messages" [ngClass]="{'mine': msg.isMine, 'other': !msg.isMine}">
+                    <strong>{{ msg.senderUsername }}</strong>
+                    <div class="msg-detail">
+                        <p class="msg-content">{{ msg.content }}</p>
+                        <p class="msg-date">{{ msg.sentAt | date:'dd.MM.yyyy HH:mm' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" placeholder="Напиши съобщение..." [(ngModel)]="newMessage">
+            <button (click)="sendMessage()">Изпрати</button>
+        </div>
+    </div>
+</div>
