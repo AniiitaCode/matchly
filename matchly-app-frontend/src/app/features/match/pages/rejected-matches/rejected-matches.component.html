@@ -1,0 +1,32 @@
+<swiper-container slides-per-view="auto" space-between="20px" navigation="true" class="reject-container">
+
+  <button class="btn-back" (click)="onBack()">←</button>
+  
+  <ng-container *ngIf="rejectedMatches.length > 0; else noMatches">
+    <swiper-slide *ngFor="let match of rejectedMatches">
+      <div class="match-reject">
+
+        <a [routerLink]="['/user', match.userId]" class="reject-content">
+          <img [src]="match.photoUrl" />
+          <p>{{ match.username }}</p>
+
+          <div class="score-bar">
+            <div class="score-fill" [style.width.%]="match.overallScore"></div>
+          </div>
+          <p class="score-value">{{ match.overallScore | number:'1.1-1' }}%</p>
+        </a>
+
+        <div class="btns">
+          <button (click)="onApprove(match.matchId)">🔄❤️</button>
+          <button (click)="onDelete(match.matchId)">✖️</button>
+        </div>
+
+      </div>
+    </swiper-slide>
+  </ng-container>
+
+  <ng-template #noMatches>
+    <p class="no-matches-message">Няма отхвърлени съвпадения...👀</p>
+  </ng-template>
+
+</swiper-container>
