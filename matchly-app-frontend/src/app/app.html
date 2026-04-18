@@ -1,4 +1,6 @@
-<app-header></app-header>
+@if (!isMessagesPage && !isMatchingPages) {
+  <app-header></app-header>
+}
 
 <main>
   <router-outlet></router-outlet>
@@ -6,4 +8,6 @@
 
 <app-toast></app-toast>
 
-<app-footer></app-footer>
+@if (!isAuthPage && !isMessagesPage && !isMatchingPages) {
+  <app-footer></app-footer>
+}
