@@ -1,0 +1,26 @@
+<div class="match-container">
+
+  <button class="btn-back" (click)="onBack()">←</button>
+
+  <ng-container *ngIf="mutualMatches.length > 0; else noMatches">
+    <div *ngFor="let match of mutualMatches">
+      <div class="match-heart">
+        <a [routerLink]="['/user', match.userId]" class="match-content">
+          <img [src]="match.photoUrl" />
+          <p>{{ match.username }}</p>
+
+          <div class="score-bar">
+            <div class="score-fill" [style.width.%]="match.overallScore"></div>
+          </div>
+          <p class="score-value">{{ match.overallScore | number:'1.1-1' }}%</p>
+        </a>
+
+        <button (click)="openChat(match.userId)" class="chat-btn">Започни чат •••💬</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #noMatches>
+    <p class="no-matches-message">Няма взаимни съвпадения...👀</p>
+  </ng-template>
+</div>
