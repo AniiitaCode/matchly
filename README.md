@@ -252,6 +252,10 @@ Represents a registered user.
 
 ## 8. How to Run the Project
 
+## Requirements
+- Java 17 (JDK)
+- Maven 
+
 ### 1. Clone the repository
 Open the project in IntelliJ IDEA (root folder)
 
