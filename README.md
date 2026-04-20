@@ -262,15 +262,16 @@ Open the project in IntelliJ IDEA (root folder)
 ---
 
 ### 2. Backend
+
+**Configuration (application.properties):**
+- spring.datasource.username  
+- spring.datasource.password
+- 
 - Install and start MySQL  
 - Create database: `matchly_db` (optional)  
 - Open `matchly-backend`  
 - Run `MatchlyApplication`  
 - Backend runs on: http://localhost:8080  
-
-**Configuration (application.properties):**
-- spring.datasource.username  
-- spring.datasource.password  
 
 ---
 
