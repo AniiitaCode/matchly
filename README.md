@@ -266,6 +266,7 @@ Open the project in IntelliJ IDEA (root folder)
 **Configuration (application.properties):**
 - spring.datasource.username  
 - spring.datasource.password
+
   
 - Install and start MySQL  
 - Create database: `matchly_db` (optional)  
